@@ -1,0 +1,274 @@
+{
+  "products": [
+    {
+      "id": "6",
+      "title": "Calvin Klein CK One",
+      "description": "A fragrance bottle for your daily collection.",
+      "price": 2400,
+      "category": "fragrances",
+      "image": "https://cdn.dummyjson.com/product-images/fragrances/calvin-klein-ck-one/thumbnail.webp",
+      "stock": 7
+    },
+    {
+      "id": "7",
+      "title": "Chanel Coco Noir",
+      "description": "A fragrance presented in a dark glass bottle.",
+      "price": 7200,
+      "category": "fragrances",
+      "image": "https://cdn.dummyjson.com/product-images/fragrances/chanel-coco-noir-eau-de/thumbnail.webp",
+      "stock": 4
+    },
+    {
+      "id": "8",
+      "title": "Dior J'adore",
+      "description": "A fragrance in a decorative gold-toned bottle.",
+      "price": 6800,
+      "category": "fragrances",
+      "image": "https://cdn.dummyjson.com/product-images/fragrances/dior-j'adore/thumbnail.webp",
+      "stock": 0
+    },
+    {
+      "id": "10",
+      "title": "Gucci Bloom",
+      "description": "A fragrance presented in a soft pink bottle.",
+      "price": 5600,
+      "category": "fragrances",
+      "image": "https://cdn.dummyjson.com/product-images/fragrances/gucci-bloom-eau-de/thumbnail.webp",
+      "stock": 6
+    },
+    {
+      "id": "11",
+      "title": "Wooden Double Bed",
+      "description": "A wooden bed frame for a spacious bedroom.",
+      "price": 28500,
+      "category": "furniture",
+      "image": "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/thumbnail.webp",
+      "stock": 3
+    },
+    {
+      "id": "12",
+      "title": "Classic Accent Sofa",
+      "description": "An upholstered sofa for a living room or reading space.",
+      "price": 32000,
+      "category": "furniture",
+      "image": "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-sofa/thumbnail.webp",
+      "stock": 2
+    },
+    {
+      "id": "13",
+      "title": "Bedside Table",
+      "description": "A compact table for keeping bedside essentials nearby.",
+      "price": 3500,
+      "category": "furniture",
+      "image": "https://cdn.dummyjson.com/product-images/furniture/bedside-table-african-cherry/thumbnail.webp",
+      "stock": 11
+    },
+    {
+      "id": "1",
+      "title": "Essence Mascara",
+      "description": "Everyday mascara for fuller-looking lashes.",
+      "price": 350,
+      "category": "beauty",
+      "image": "https://cdn.dummyjson.com/product-images/beauty/essence-mascara-lash-princess/thumbnail.webp",
+      "stock": 18
+    },
+    {
+      "id": "2",
+      "title": "Eyeshadow Palette",
+      "description": "A selection of eyeshadow shades with a built-in mirror.",
+      "price": 650,
+      "category": "beauty",
+      "image": "https://cdn.dummyjson.com/product-images/beauty/eyeshadow-palette-with-mirror/thumbnail.webp",
+      "stock": 10
+    },
+    {
+      "id": "3",
+      "title": "Face Powder",
+      "description": "Lightweight powder for finishing your makeup.",
+      "price": 420,
+      "category": "beauty",
+      "image": "https://cdn.dummyjson.com/product-images/beauty/powder-canister/thumbnail.webp",
+      "stock": 0
+    },
+    {
+      "id": "4",
+      "title": "Red Lipstick",
+      "description": "A classic red shade for your makeup collection.",
+      "price": 280,
+      "category": "beauty",
+      "image": "https://cdn.dummyjson.com/product-images/beauty/red-lipstick/thumbnail.webp",
+      "stock": 24
+    },
+    {
+      "id": "9",
+      "title": "Dolce & Gabbana The One",
+      "description": "A fragrance bottle for everyday or occasion use.",
+      "price": 4800,
+      "category": "fragrances",
+      "image": "https://cdn.dummyjson.com/product-images/fragrances/dolce-shine/thumbnail.webp",
+      "stock": 9
+    },
+    {
+      "id": "5",
+      "title": "Red Nail Polish",
+      "description": "Glossy red nail polish in a compact bottle.",
+      "price": 160,
+      "category": "beauty",
+      "image": "https://cdn.dummyjson.com/product-images/beauty/red-nail-polish/thumbnail.webp",
+      "stock": 30
+    },
+    {
+      "id": "14",
+      "title": "Office Desk Chair",
+      "description": "A desk chair for a home office or study area.",
+      "price": 6200,
+      "category": "furniture",
+      "image": "https://cdn.dummyjson.com/product-images/furniture/knoll-saarinen-executive-conference-chair/thumbnail.webp",
+      "stock": 8
+    },
+    {
+      "id": "15",
+      "title": "Bathroom Vanity",
+      "description": "A bathroom storage unit with a fitted basin.",
+      "price": 12500,
+      "category": "furniture",
+      "image": "https://cdn.dummyjson.com/product-images/furniture/wooden-bathroom-sink-with-mirror/thumbnail.webp",
+      "stock": 0
+    },
+    {
+      "id": "16",
+      "title": "Fresh Apples",
+      "description": "A portion of apples for snacks and fruit bowls.",
+      "price": 85,
+      "category": "groceries",
+      "image": "https://cdn.dummyjson.com/product-images/groceries/apple/thumbnail.webp",
+      "stock": 45
+    },
+    {
+      "id": "17",
+      "title": "Beef Steak",
+      "description": "A portion of beef for your next home-cooked meal.",
+      "price": 380,
+      "category": "groceries",
+      "image": "https://cdn.dummyjson.com/product-images/groceries/beef-steak/thumbnail.webp",
+      "stock": 14
+    },
+    {
+      "id": "18",
+      "title": "Dry Cat Food",
+      "description": "Packaged cat food for your household supplies.",
+      "price": 450,
+      "category": "groceries",
+      "image": "https://cdn.dummyjson.com/product-images/groceries/cat-food/thumbnail.webp",
+      "stock": 20
+    },
+    {
+      "id": "19",
+      "title": "Whole Chicken",
+      "description": "A whole chicken for roasting or preparing family meals.",
+      "price": 260,
+      "category": "groceries",
+      "image": "https://cdn.dummyjson.com/product-images/groceries/chicken-meat/thumbnail.webp",
+      "stock": 16
+    },
+    {
+      "id": "20",
+      "title": "Cooking Oil",
+      "description": "Bottled cooking oil for everyday kitchen use.",
+      "price": 95,
+      "category": "groceries",
+      "image": "https://cdn.dummyjson.com/product-images/groceries/cooking-oil/thumbnail.webp",
+      "stock": 35
+    },
+    {
+      "id": "21",
+      "title": "Fresh Cucumbers",
+      "description": "Cucumbers for salads, sandwiches, and snacks.",
+      "price": 25,
+      "category": "groceries",
+      "image": "https://cdn.dummyjson.com/product-images/groceries/cucumber/thumbnail.webp",
+      "stock": 50
+    },
+    {
+      "id": "22",
+      "title": "Dry Dog Food",
+      "description": "Packaged dog food for your household supplies.",
+      "price": 580,
+      "category": "groceries",
+      "image": "https://cdn.dummyjson.com/product-images/groceries/dog-food/thumbnail.webp",
+      "stock": 12
+    },
+    {
+      "id": "23",
+      "title": "Egg Pack",
+      "description": "Eggs for breakfast, baking, and everyday cooking.",
+      "price": 90,
+      "category": "groceries",
+      "image": "https://cdn.dummyjson.com/product-images/groceries/eggs/thumbnail.webp",
+      "stock": 28
+    },
+    {
+      "id": "24",
+      "title": "Fish Steak",
+      "description": "A portion of fish for grilling or pan cooking.",
+      "price": 220,
+      "category": "groceries",
+      "image": "https://cdn.dummyjson.com/product-images/groceries/fish-steak/thumbnail.webp",
+      "stock": 0
+    },
+    {
+      "id": "25",
+      "title": "Green Bell Peppers",
+      "description": "Green peppers for salads and cooked dishes.",
+      "price": 40,
+      "category": "groceries",
+      "image": "https://cdn.dummyjson.com/product-images/groceries/green-bell-pepper/thumbnail.webp",
+      "stock": 32
+    },
+    {
+      "id": "26",
+      "title": "Fresh Chilli Peppers",
+      "description": "Chilli peppers for adding heat to your meals.",
+      "price": 30,
+      "category": "groceries",
+      "image": "https://cdn.dummyjson.com/product-images/groceries/green-chili-pepper/thumbnail.webp",
+      "stock": 22
+    },
+    {
+      "id": "27",
+      "title": "Pure Honey",
+      "description": "A jar of honey for toast, drinks, and desserts.",
+      "price": 180,
+      "category": "groceries",
+      "image": "https://cdn.dummyjson.com/product-images/groceries/honey-jar/thumbnail.webp",
+      "stock": 17
+    },
+    {
+      "id": "28",
+      "title": "Vanilla Ice Cream",
+      "description": "A frozen dessert for sharing after a meal.",
+      "price": 120,
+      "category": "groceries",
+      "image": "https://cdn.dummyjson.com/product-images/groceries/ice-cream/thumbnail.webp",
+      "stock": 19
+    },
+    {
+      "id": "29",
+      "title": "Fresh Fruit Juice",
+      "description": "Bottled juice to serve chilled.",
+      "price": 55,
+      "category": "groceries",
+      "image": "https://cdn.dummyjson.com/product-images/groceries/juice/thumbnail.webp",
+      "stock": 40
+    },
+    {
+      "id": "30",
+      "title": "Fresh Kiwi",
+      "description": "Kiwi fruit for snacks, smoothies, and fruit salads.",
+      "price": 110,
+      "category": "groceries",
+      "image": "https://cdn.dummyjson.com/product-images/groceries/kiwi/thumbnail.webp",
+      "stock": 25
+    }
+  ]
+}
