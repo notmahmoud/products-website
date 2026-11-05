@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { fetchProducts } from "./productsSlice";
 import type { ProductSort } from "./product.types";
-import { useAppDispatch } from "../../app/hooks";
+import { useAppDispatch } from "../../lib/redux/hooks";
 export default function useProductQuery() {
   const dispatch = useAppDispatch();
 

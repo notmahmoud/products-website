@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import { useState } from "react";
-import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { useAppSelector, useAppDispatch } from "../../lib/redux/hooks";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 

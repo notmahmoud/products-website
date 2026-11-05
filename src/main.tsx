@@ -7,8 +7,10 @@ import { BrowserRouter } from "react-router-dom";
 import { StyledEngineProvider, ThemeProvider } from "@mui/material/styles";
 import GlobalStyles from "@mui/material/GlobalStyles";
 
-import { store } from "./app/store";
-import { theme } from "./app/theme";
+import { makeStore } from "./lib/redux/store";
+import { theme } from "./lib/mui/theme";
+
+const store = makeStore();
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>

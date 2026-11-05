@@ -4,7 +4,7 @@ import Pagination from "@mui/material/Pagination";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { useAppDispatch, useAppSelector } from "../lib/redux/hooks";
 import { fetchProducts } from "../features/products/productsSlice";
 
 import type { Product } from "../features/products/product.types";

@@ -5,7 +5,7 @@ import Button from "@mui/material/Button";
 
 import type { Product } from "../product.types";
 
-import { useAppDispatch } from "../../../app/hooks";
+import { useAppDispatch } from "../../../lib/redux/hooks";
 import { addToCart } from "../../cart/cartSlice";
 
 type ProductCardProps = {

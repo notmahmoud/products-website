@@ -5,7 +5,7 @@ import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 import { Avatar } from "@mui/material";
 
-import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { useAppSelector, useAppDispatch } from "../../lib/redux/hooks";
 import { logout } from "../../features/auth/authSlice";
 
 type NavbarProps = {

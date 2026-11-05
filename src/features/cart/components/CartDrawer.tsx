@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 
 import CartItemRow from "./CartItemRow";
 
-import { useAppSelector, useAppDispatch } from "../../../app/hooks";
+import { useAppSelector, useAppDispatch } from "../../../lib/redux/hooks";
 import { setQuantity, removeItem } from "../cartSlice";
 
 type CartDrawerProps = {
