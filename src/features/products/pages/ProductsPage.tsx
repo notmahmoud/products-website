@@ -4,15 +4,18 @@ import Pagination from "@mui/material/Pagination";
 import CircularProgress from "@mui/material/CircularProgress";
 
 import { useState } from "react";
-import { useAppDispatch, useAppSelector } from "../lib/redux/hooks";
-import { fetchProducts } from "../features/products/productsSlice";
 
-import type { Product } from "../features/products/product.types";
-import ProductCard from "../features/products/components/ProductCard";
-import ProductFilters from "../features/products/components/ProductFilters";
-import ProductSearch from "../features/products/components/ProductSearch";
-import ProductQuickView from "../features/products/components/ProductQuickView";
-import useProductQuery from "../features/products/useProductQuery";
+import { useAppDispatch, useAppSelector } from "@/lib/redux/hooks";
+import { fetchProducts } from "@/features/products/productsSlice";
+
+import type { Product } from "@/features/products/product.types";
+
+import ProductCard from "@/features/products/components/ProductCard";
+import ProductFilters from "@/features/products/components/ProductFilters";
+import ProductSearch from "@/features/products/components/ProductSearch";
+import ProductQuickView from "@/features/products/components/ProductQuickView";
+
+import useProductQuery from "@/features/products/useProductQuery";
 
 export default function ProductsPage() {
   const {

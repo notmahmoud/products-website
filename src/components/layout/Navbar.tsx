@@ -1,130 +1,43 @@
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Button from "@mui/material/Button";
-import Badge from "@mui/material/Badge";
-import IconButton from "@mui/material/IconButton";
-import { Avatar } from "@mui/material";
+import Link from "next/link";
+import NavbarActions from "@/components/layout/NavbarActions";
 
-import { useAppSelector, useAppDispatch } from "../../lib/redux/hooks";
-import { logout } from "../../features/auth/authSlice";
-
-type NavbarProps = {
-  handleOpenCart: () => void;
-  handleOpenLogin: () => void;
-};
-export default function Navbar({
-  handleOpenCart,
-  handleOpenLogin,
-}: NavbarProps) {
-  const dispatch = useAppDispatch();
-  const user = useAppSelector((state) => state.auth.user);
-
-  const totalQuantity = useAppSelector((state) =>
-    state.cart.items.reduce((total, cartItem) => total + cartItem.quantity, 0),
-  );
-
-  function handleLogout() {
-    dispatch(logout());
-  }
+export default function Navbar() {
   return (
-    <AppBar
-      position="static"
-      elevation={0}
-      color="transparent"
-      className="border-b border-[#d9d0c3]"
-    >
-      <Toolbar
-        component="nav"
-        aria-label="Main navigation"
-        disableGutters
-        className="mx-auto flex min-h-24 w-full max-w-7xl justify-between gap-4 px-5 sm:min-h-28 sm:px-10"
-      >
-        <a href="/" className="font-serif text-3xl tracking-tight sm:text-4xl">
-          Products Store<span className="text-[#9a6148]"></span>
-        </a>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/90 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.04)] border-b border-surface-variant">
+      <div className="max-w-[1380px] mx-auto px-margin md:px-margin-tablet lg:px-margin-desktop h-20 flex items-center justify-between gap-space-md">
 
-        <div className="flex items-center gap-2 sm:gap-4">
-          <Button
-            href="/"
-            color="inherit"
-            className="min-w-0 px-3 py-2 text-sm"
-          >
-            Shop
-          </Button>
-
-          <IconButton
-            color="inherit"
-            onClick={handleOpenCart}
-            aria-label={`Open cart, ${totalQuantity} items`}
-            className="p-3"
-          >
-            <Badge
-              badgeContent={totalQuantity}
-              showZero
-              sx={{
-                "& .MuiBadge-badge": {
-                  backgroundColor: "#3b302a",
-                  color: "#fffaf3",
-                  fontSize: "0.65rem",
-                  minWidth: 18,
-                  height: 18,
-                },
-              }}
-            >
-              <svg
-                width="23"
-                height="23"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.7"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M3 3h2l2.4 12h11.8L21 7H6" />
-                <circle cx="9" cy="20" r="1" />
-                <circle cx="18" cy="20" r="1" />
-              </svg>
-            </Badge>
-          </IconButton>
-
-          <span aria-hidden="true" className="h-6 w-px bg-[#d9d0c3]" />
-
-          {user ? (
-            <div className="flex items-center gap-2">
-              <Avatar
-                className="h-8 w-8 text-xs"
-                sx={{
-                  backgroundColor: "#eae4d9",
-                  color: "#3b302a",
-                }}
-              >
-                {user.firstName.charAt(0)}
-                {user.lastName.charAt(0)}
-              </Avatar>
-
-              <Button
-                color="inherit"
-                size="small"
-                onClick={handleLogout}
-                className="min-w-0 px-2"
-              >
-                Logout
-              </Button>
-            </div>
-          ) : (
-            <Button
-              variant="outlined"
-              color="inherit"
-              onClick={handleOpenLogin}
-              className="px-4 py-2 text-sm"
-            >
-              Sign in
-            </Button>
-          )}
+        {/* Part 1: Brand Wordmark — static, Server Component */}
+        <div className="flex items-center gap-space-md flex-shrink-0">
+          <Link href="/" className="flex items-center gap-space-sm">
+            <img
+              alt="ShopSpace Brand Wordmark"
+              className="h-8 w-auto object-contain"
+              src="https://lh3.googleusercontent.com/aida/AEtjO1UuqceHxkOe-GnJsTilejQs-AY6vU9mj5eoH6QsL4YqGShQIklwxa_5iksFkSOUwdrTB3BsFMGW1qFSzIF3GqdyoZLvV2Ov0kBi0T1MmR1ZzOExpGNMoq1LRRjqhbYBiBEAADa7s4NIKCf9fjVdykHfTfIofpD03jVHD7N1-uS4UfE25H8vh2WqCkj9zmdY1s7eqB4FAj37kSFp0b6jVeLE0I51giVDbf2kPGcFf0Q"
+            />
+            <span className="font-headline-md text-headline-md text-primary tracking-tight">
+              ShopSpace
+            </span>
+          </Link>
         </div>
-      </Toolbar>
-    </AppBar>
+
+        {/* Part 2: Center Navigation — static, Server Component */}
+        <nav
+          aria-label="Main navigation"
+          className="hidden md:flex items-center gap-gutter"
+        >
+          <Link
+            href="/"
+            className="py-space-xs transition-colors text-primary border-b-2 border-primary font-title-md"
+          >
+            Home
+          </Link>
+
+        </nav>
+
+        {/* Part 3: Interactive controls — Client Component boundary */}
+        <NavbarActions />
+
+      </div>
+    </header>
   );
 }
