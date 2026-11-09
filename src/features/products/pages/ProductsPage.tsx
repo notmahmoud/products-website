@@ -1,20 +1,19 @@
+"use client";
+
 import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import Pagination from "@mui/material/Pagination";
 import CircularProgress from "@mui/material/CircularProgress";
-
 import { useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "@/lib/redux/hooks";
 import { fetchProducts } from "@/features/products/productsSlice";
-
 import type { Product } from "@/features/products/product.types";
 
 import ProductCard from "@/features/products/components/ProductCard";
 import ProductFilters from "@/features/products/components/ProductFilters";
 import ProductSearch from "@/features/products/components/ProductSearch";
 import ProductQuickView from "@/features/products/components/ProductQuickView";
-
 import useProductQuery from "@/features/products/useProductQuery";
 
 export default function ProductsPage() {
@@ -33,7 +32,7 @@ export default function ProductsPage() {
 
   const dispatch = useAppDispatch();
 
-  //modal quickview
+  // Modal quickview state
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [quickViewOpen, setQuickViewOpen] = useState(false);
 
@@ -43,7 +42,6 @@ export default function ProductsPage() {
   const totalPages = useAppSelector((state) => state.products.totalPages);
   const totalItems = useAppSelector((state) => state.products.totalItems);
 
-  // pop-up
   function handleQuickView(product: Product) {
     setSelectedProduct(product);
     setQuickViewOpen(true);
@@ -51,12 +49,31 @@ export default function ProductsPage() {
 
   function handleCloseQuickView() {
     setQuickViewOpen(false);
-    // Keep selectedProduct so the closing animation retains its content
   }
 
   return (
     <>
-      <div className="flex flex-col gap-5 border-b border-[#d9d0c3] py-6 lg:flex-row lg:items-center lg:justify-between">
+      {/* Editorial Header */}
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-space-md mb-space-lg pb-space-md border-b border-outline-variant">
+        <div>
+          <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-space-xs">
+            Curation · Collection Archive
+          </span>
+          <h1 className="font-headline-lg text-headline-lg text-primary tracking-tight">
+            All Curated Essentials
+          </h1>
+        </div>
+        <div className="flex items-center gap-space-sm">
+          {status === "succeeded" && (
+            <span className="font-body-sm text-body-sm text-on-surface-variant">
+              Showing {totalItems} {totalItems === 1 ? "Selected Item" : "Selected Items"}
+            </span>
+          )}
+        </div>
+      </div>
+
+      {/* Discovery & Filter Bar */}
+      <div className="flex flex-col gap-5 pb-space-xl lg:flex-row lg:items-center lg:justify-between">
         <ProductSearch
           searchText={searchText}
           setSearchText={setSearchText}
@@ -71,25 +88,22 @@ export default function ProductsPage() {
         />
       </div>
 
-      {status === "succeeded" && (
-        <p className="pb-6 pt-5 text-xs tracking-wide text-[#75695e]">
-          {totalItems} {totalItems === 1 ? "product" : "products"}
-        </p>
-      )}
-
+      {/* Loading State */}
       {(status === "idle" || status === "loading") && (
         <div
           className="flex min-h-80 items-center justify-center"
           role="status"
         >
           <CircularProgress
-            size={28}
+            size={32}
             thickness={3}
             aria-label="Loading products"
+            sx={{ color: "var(--color-primary, #233120)" }}
           />
         </div>
       )}
 
+      {/* Error State */}
       {status === "failed" && (
         <Alert
           severity="error"
@@ -110,17 +124,25 @@ export default function ProductsPage() {
         </Alert>
       )}
 
+      {/* Product Grid / Empty State */}
       {status === "succeeded" &&
         (items.length === 0 ? (
           <div className="py-20 text-center">
-            <h2 className="font-serif text-3xl">Nothing found this time.</h2>
-
-            <p className="mt-3 text-sm text-[#75695e]">
+            <span
+              className="material-symbols-outlined text-outline text-[48px] mb-space-md block"
+              aria-hidden="true"
+            >
+              inventory_2
+            </span>
+            <h2 className="font-headline-md text-headline-md text-primary">
+              Nothing found this time.
+            </h2>
+            <p className="mt-space-xs text-body-md text-on-surface-variant">
               Try another search or choose a different category.
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
             {items.map((item) => (
               <ProductCard
                 product={item}
@@ -131,14 +153,16 @@ export default function ProductsPage() {
           </div>
         ))}
 
+      {/* Quick View Dialog */}
       <ProductQuickView
         selectedProduct={selectedProduct}
         quickViewOpen={quickViewOpen}
         handleCloseQuickView={handleCloseQuickView}
       />
 
+      {/* Pagination */}
       {totalPages > 1 && (
-        <div className="mt-14 flex justify-center border-t border-[#d9d0c3] pt-8">
+        <div className="mt-14 flex justify-center border-t border-outline-variant pt-8">
           <Pagination
             count={totalPages}
             page={page}

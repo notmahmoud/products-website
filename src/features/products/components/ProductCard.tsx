@@ -1,10 +1,7 @@
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import CardActions from "@mui/material/CardActions";
-import Button from "@mui/material/Button";
+"use client";
 
+import Link from "next/link";
 import type { Product } from "../product.types";
-
 import { useAppDispatch } from "../../../lib/redux/hooks";
 import { addToCart } from "../../cart/cartSlice";
 
@@ -26,60 +23,71 @@ export default function ProductCard({
   const dispatch = useAppDispatch();
 
   return (
-    <Card
-      component="article"
-      elevation={0}
-      className="flex h-full flex-col overflow-visible bg-transparent"
-    >
-      <div className="group relative aspect-square overflow-hidden bg-[#eae4d9]">
-        <img
-          src={product.image}
-          alt={product.title}
-          loading="lazy"
-          className="h-full w-full object-contain p-6 transition-transform duration-300 motion-safe:group-hover:scale-105"
-        />
+    <article className="group flex flex-col bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 h-full justify-between">
+      <div>
+        {/* Full-bleed background on left, right, top */}
+        <Link
+          href={`/products/${product.id}`}
+          className="w-full aspect-4/5g-surface-container-low overflow-hidden relative block"
+        >
+          <img
+            src={product.image}
+            alt={product.title}
+            loading="lazy"
+            className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500 ease-out"
+          />
 
-        {product.stock <= 0 && (
-          <span className="absolute left-3 top-3 bg-[#f5f1e8] px-3 py-1 text-xs text-[#3b302a]">
-            Sold out
+          {product.stock <= 0 ? (
+            <span className="absolute top-2.5 left-2.5 bg-surface/90 backdrop-blur-sm px-2.5 py-0.5 rounded text-[11px] font-semibold text-error">
+              Sold out
+            </span>
+          ) : (
+            <span className="absolute top-2.5 right-2.5 bg-surface/90 backdrop-blur-sm px-2 py-0.5 rounded font-label-sm text-label-sm text-primary capitalize">
+              {product.category}
+            </span>
+          )}
+        </Link>
+
+        {/* Card Details */}
+        <div className="p-4 pb-2">
+          <span className="font-label-sm text-label-sm text-secondary uppercase tracking-wider block mb-1">
+            {product.category}
           </span>
-        )}
+
+          <h2 className="font-title-md text-title-md text-primary mb-1 line-clamp-1">
+            <Link
+              href={`/products/${product.id}`}
+              className="hover:text-secondary transition-colors"
+            >
+              {product.title}
+            </Link>
+          </h2>
+
+          <span className="font-numeral-price text-numeral-price text-primary block">
+            {priceFormatter.format(product.price)}
+          </span>
+        </div>
       </div>
 
-      <CardContent className="flex-1 px-0 pb-3 pt-5">
-        <p className="mb-2 text-[11px] uppercase tracking-[0.16em] text-[#75695e]">
-          {product.category}
-        </p>
-
-        <h2 className="mb-2 line-clamp-2 min-h-14 font-serif text-xl leading-7 text-[#3b302a]">
-          {product.title}
-        </h2>
-
-        <p className="text-sm text-[#3b302a]">
-          {priceFormatter.format(product.price)}
-        </p>
-      </CardContent>
-
-      <CardActions disableSpacing className="gap-3 px-0 pb-0 pt-2">
-        <Button
-          variant="outlined"
-          fullWidth
-          className="px-2 py-2 text-xs"
+      {/* Action Buttons */}
+      <div className="p-4 pt-2 flex items-center gap-2 border-t border-surface-variant/40">
+        <button
+          type="button"
           onClick={() => handleQuickView(product)}
+          className="flex-1 py-2 px-2 bg-surface-container-high text-primary hover:bg-surface-container-highest font-label-md text-label-md rounded-lg transition-colors cursor-pointer text-center"
         >
-          Quick view
-        </Button>
+          Quick View
+        </button>
 
-        <Button
-          variant="contained"
-          fullWidth
+        <button
+          type="button"
           disabled={product.stock <= 0}
-          className="px-2 py-2 text-xs"
           onClick={() => dispatch(addToCart(product))}
+          className="flex-1 py-2 px-2 bg-primary text-on-primary hover:bg-primary-container disabled:opacity-50 disabled:cursor-not-allowed font-label-md text-label-md rounded-lg transition-colors cursor-pointer text-center"
         >
-          Add to cart
-        </Button>
-      </CardActions>
-    </Card>
+          Add to Cart
+        </button>
+      </div>
+    </article>
   );
 }

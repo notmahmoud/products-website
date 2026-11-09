@@ -12,7 +12,9 @@ export default function NavbarActions() {
   const dispatch = useAppDispatch();
 
   const user = useAppSelector((state) => state.auth.user);
-  const loginLoading = useAppSelector((state) => state.auth.status === "loading");
+  const loginLoading = useAppSelector(
+    (state) => state.auth.status === "loading",
+  );
   const loginError = useAppSelector((state) => state.auth.error);
 
   const totalQuantity = useAppSelector((state) =>
@@ -42,7 +44,7 @@ export default function NavbarActions() {
         {user ? (
           <div className="flex items-center gap-space-xs">
             <div
-              className="w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 text-on-primary text-[13px] font-semibold overflow-hidden shadow-sm"
+              className="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0 text-on-primary text-[13px] font-semibold overflow-hidden shadow-sm"
               title={`${user.firstName} ${user.lastName}`}
             >
               {user.image ? (
@@ -82,7 +84,7 @@ export default function NavbarActions() {
               type="button"
               onClick={() => setLoginOpen(true)}
               aria-label="Sign in"
-              className="sm:hidden w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0 text-on-primary cursor-pointer"
+              className="sm:hidden w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0 text-on-primary cursor-pointer"
             >
               <span className="material-symbols-outlined text-[18px]">
                 person
@@ -102,7 +104,7 @@ export default function NavbarActions() {
             shopping_bag
           </span>
           {totalQuantity > 0 && (
-            <span className="absolute -top-1 -right-1 flex items-center justify-center min-w-[18px] h-[18px] bg-secondary text-on-secondary rounded-full font-label-sm text-[10px] px-1 font-semibold leading-none">
+            <span className="absolute -top-1 -right-1 flex items-center justify-center min-w-4.5 h-4.5 bg-secondary text-on-secondary rounded-full font-label-sm text-[10px] px-1 font-semibold leading-none">
               {totalQuantity}
             </span>
           )}
@@ -124,4 +126,3 @@ export default function NavbarActions() {
     </>
   );
 }
-

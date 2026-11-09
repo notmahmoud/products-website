@@ -6,7 +6,7 @@ import "./globals.css";
 import Providers from "./providers";
 
 export const metadata: Metadata = {
-  title: "ShopSpace — Crafted for Elevated Living",
+  title: "ShopSpace",
   description:
     "ShopSpace curates thoughtfully designed essentials across beauty, furniture, groceries, and fragrance — crafted for elevated daily living.",
 };

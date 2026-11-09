@@ -143,29 +143,30 @@ Do not invent product information such as ingredients, origin, volume, or extrac
 
 ## 9. Current Project Status
 
-The project has been migrated from Vite to Next.js App Router at the foundation level.
+The storefront UI migration from React + Vite to Next.js App Router has been completed across all primary views.
 
 Completed:
-- Next.js foundation and root layout.
-- Redux provider integration.
-- MUI integration with App Router.
-- Tailwind CSS setup.
-- Design tokens and global typography foundation.
-- Initial architecture inspection of the existing application and Stitch references.
+- Next.js foundation and root layout (`layout.tsx`, `providers.tsx`).
+- Redux provider integration and AppRouterCacheProvider for MUI.
+- Tailwind CSS v4 design tokens and global typography foundation (`globals.css`).
+- Global layout: Navbar (Server Component) and NavbarActions (Client Component).
+- Global layout: 4-column Footer and colophon bar (Server Component).
+- Shopping cart drawer (`CartDrawer.tsx` & `CartItemRow.tsx`) with subtotal and checkout action bar.
+- Homepage (`/`): 6 presentational Server Component sections (`HeroSection`, `CategoriesSection`, `FeaturedArchiveSection`, `SeasonalBannerSection`, `DailyRitualsSection`, `WhyShopSpaceSection`).
+- Product Catalogue (`/products`): Editorial header, search bar, category & sort controls, responsive `ProductCard` grid, and `ProductQuickView` modal.
+- Product Details (`/products/[id]`): Statically prerendered routes (`generateStaticParams`), showcase gallery, specs table, minimal Client Component for purchase actions (`ProductPurchaseActions`), and related products grid.
+- Authentication: Sign-in modal (`LoginDialog.tsx`) and demo credentials popover (`TestAccountsPopover.tsx`).
+- Order Confirmation (`/order-confirmation`): Success badge, dispatch timeline, order summary breakdown, and delivery address presentation.
 
 Current stage:
-- Global layout styling: Navbar and Footer.
-- The previous Antigravity implementation attempt was rejected because it mixed existing and new JSX, introducing duplicate declarations and malformed JSX.
-- The original implementation should be treated as the starting point for the next styling attempt.
-- Restart styling one component at a time, beginning with Navbar.
-- Do not assume rejected changes were applied.
+- Storefront UI presentation is complete. All visual templates from `DESIGN.md` are accurately reproduced with Tailwind v4, MUI, and Next.js App Router conventions.
+- Ready for developer engineering exercises: server-side data fetching, caching/revalidation, Route Handlers, checkout flow, and state persistence.
 
 Next planned stages:
-1. Finish global Navbar and Footer styling.
-2. Implement homepage.
-3. Implement product catalogue.
-4. Implement product details.
-5. Continue through the remaining features and backend architecture.
+1. Developer implementation of data fetching and caching for the storefront.
+2. Checkout workflow and order placement logic.
+3. User account & order history views.
+4. Backend Route Handlers and database/auth provider selection.
 
 Update this section whenever significant work is completed.
 

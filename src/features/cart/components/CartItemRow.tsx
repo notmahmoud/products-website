@@ -25,8 +25,8 @@ export default function CartItemRow({
   );
 
   return (
-    <article className="flex gap-4 border-b border-[#d9d0c3] py-6">
-      <div className="h-24 w-24 shrink-0 bg-[#eae4d9] p-2">
+    <article className="flex gap-4 border-b border-outline-variant py-6">
+      <div className="h-24 w-24 shrink-0 bg-surface-container p-2">
         <img
           src={cartItem.product.image}
           alt={cartItem.product.title}
@@ -35,11 +35,11 @@ export default function CartItemRow({
       </div>
 
       <div className="min-w-0 flex-1">
-        <h3 className="font-serif text-lg leading-6">
+        <h3 className="font-display text-lg leading-6 text-on-surface">
           {cartItem.product.title}
         </h3>
 
-        <p className="mt-2 text-sm text-[#75695e]">
+        <p className="mt-2 text-sm text-on-surface-variant">
           {new Intl.NumberFormat("en-EG", {
             style: "currency",
             currency: "EGP",
@@ -78,7 +78,7 @@ export default function CartItemRow({
           <Button
             color="inherit"
             size="small"
-            className="min-w-0 underline underline-offset-4"
+            className="min-w-0 underline underline-offset-4 text-on-surface-variant hover:text-error"
             onClick={() => handleRemoveItem(cartItem.product.id)}
           >
             Remove
