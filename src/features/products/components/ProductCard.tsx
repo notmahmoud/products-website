@@ -28,7 +28,7 @@ export default function ProductCard({
         {/* Full-bleed background on left, right, top */}
         <Link
           href={`/products/${product.id}`}
-          className="w-full aspect-4/5g-surface-container-low overflow-hidden relative block"
+          className="w-full aspect-4/5 bg-surface-container-low overflow-hidden relative block"
         >
           <img
             src={product.image}

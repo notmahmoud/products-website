@@ -50,9 +50,8 @@ const CATEGORIES: CategoryItem[] = [
 export default function CategoriesSection() {
   return (
     <section
-      className="w-full bg-surface-container-low py-space-xl lg:py-24"
+      className="w-full bg-surface-container-low py-space-xl lg:py-24 "
       id="categories"
-      max-w-345
     >
       <div className="max-w-345 mx-auto px-margin md:px-margin-tablet lg:px-margin-desktop">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-space-xl">

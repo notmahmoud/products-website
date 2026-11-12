@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 import HeroSection from "@/components/home/HeroSection";
 import CategoriesSection from "@/components/home/CategoriesSection";
-import FeaturedArchiveSection from "@/components/home/FeaturedArchiveSection";
+import FeaturedEssentials from "@/components/home/FeaturedEssentials";
 import SeasonalBannerSection from "@/components/home/SeasonalBannerSection";
 import DailyRitualsSection from "@/components/home/DailyRitualsSection";
 import WhyShopSpaceSection from "@/components/home/WhyShopSpaceSection";
@@ -59,26 +59,6 @@ const PREVIEW_FEATURED_PRODUCTS: Product[] = [
     image:
       "https://cdn.dummyjson.com/product-images/fragrances/gucci-bloom-eau-de/thumbnail.webp",
     stock: 6,
-  },
-  {
-    id: "11",
-    title: "Wooden Double Bed",
-    description: "A wooden bed frame for a spacious bedroom.",
-    price: 28500,
-    category: "furniture",
-    image:
-      "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-bed/thumbnail.webp",
-    stock: 3,
-  },
-  {
-    id: "12",
-    title: "Classic Accent Sofa",
-    description: "An upholstered sofa for a living room or reading space.",
-    price: 32000,
-    category: "furniture",
-    image:
-      "https://cdn.dummyjson.com/product-images/furniture/annibale-colombo-sofa/thumbnail.webp",
-    stock: 2,
   },
 ];
 
@@ -135,7 +115,7 @@ export default function HomePage() {
       <CategoriesSection />
 
       {/* 3. Featured archive (6 products) */}
-      <FeaturedArchiveSection products={PREVIEW_FEATURED_PRODUCTS} />
+      <FeaturedEssentials products={PREVIEW_FEATURED_PRODUCTS} />
 
       {/* 4. Seasonal promotional banner */}
       <SeasonalBannerSection />
