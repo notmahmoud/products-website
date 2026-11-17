@@ -1,14 +1,12 @@
 "use client";
 
-import Alert from "@mui/material/Alert";
-import Button from "@mui/material/Button";
 import Pagination from "@mui/material/Pagination";
-import CircularProgress from "@mui/material/CircularProgress";
 import { useState } from "react";
 
-import { useAppDispatch, useAppSelector } from "@/lib/redux/hooks";
-import { fetchProducts } from "@/features/products/productsSlice";
-import type { Product } from "@/features/products/product.types";
+import type {
+  Product,
+  ProductsResponse,
+} from "@/features/products/product.types";
 
 import ProductCard from "@/features/products/components/ProductCard";
 import ProductFilters from "@/features/products/components/ProductFilters";
@@ -16,7 +14,11 @@ import ProductSearch from "@/features/products/components/ProductSearch";
 import ProductQuickView from "@/features/products/components/ProductQuickView";
 import useProductQuery from "@/features/products/useProductQuery";
 
-export default function ProductsPage() {
+type ProductsPageProps = {
+  productsResponse: ProductsResponse;
+};
+
+export default function ProductsPage({ productsResponse }: ProductsPageProps) {
   const {
     page,
     setPage,
@@ -24,23 +26,18 @@ export default function ProductsPage() {
     sort,
     searchText,
     setSearchText,
-    search,
     handleCategoryChange,
     handleSortChange,
     handleSearch,
   } = useProductQuery();
 
-  const dispatch = useAppDispatch();
-
-  // Modal quickview state
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
   const [quickViewOpen, setQuickViewOpen] = useState(false);
 
-  const items = useAppSelector((state) => state.products.items);
-  const status = useAppSelector((state) => state.products.status);
-  const error = useAppSelector((state) => state.products.error);
-  const totalPages = useAppSelector((state) => state.products.totalPages);
-  const totalItems = useAppSelector((state) => state.products.totalItems);
+  const items = productsResponse.data;
+  const totalPages = productsResponse.pages;
+  const totalItems = productsResponse.items;
 
   function handleQuickView(product: Product) {
     setSelectedProduct(product);
@@ -59,16 +56,17 @@ export default function ProductsPage() {
           <span className="font-label-sm text-label-sm text-secondary uppercase tracking-widest block mb-space-xs">
             Curation · Collection Archive
           </span>
+
           <h1 className="font-headline-lg text-headline-lg text-primary tracking-tight">
             All Curated Essentials
           </h1>
         </div>
+
         <div className="flex items-center gap-space-sm">
-          {status === "succeeded" && (
-            <span className="font-body-sm text-body-sm text-on-surface-variant">
-              Showing {totalItems} {totalItems === 1 ? "Selected Item" : "Selected Items"}
-            </span>
-          )}
+          <span className="font-body-sm text-body-sm text-on-surface-variant">
+            Showing {totalItems}{" "}
+            {totalItems === 1 ? "Selected Item" : "Selected Items"}
+          </span>
         </div>
       </div>
 
@@ -88,70 +86,35 @@ export default function ProductsPage() {
         />
       </div>
 
-      {/* Loading State */}
-      {(status === "idle" || status === "loading") && (
-        <div
-          className="flex min-h-80 items-center justify-center"
-          role="status"
-        >
-          <CircularProgress
-            size={32}
-            thickness={3}
-            aria-label="Loading products"
-            sx={{ color: "var(--color-primary, #233120)" }}
-          />
+      {/* Product Grid / Empty State */}
+      {items.length === 0 ? (
+        <div className="py-20 text-center">
+          <span
+            className="material-symbols-outlined text-outline text-[48px] mb-space-md block"
+            aria-hidden="true"
+          >
+            inventory_2
+          </span>
+
+          <h2 className="font-headline-md text-headline-md text-primary">
+            Nothing found this time.
+          </h2>
+
+          <p className="mt-space-xs text-body-md text-on-surface-variant">
+            Try another search or choose a different category.
+          </p>
+        </div>
+      ) : (
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+          {items.map((item) => (
+            <ProductCard
+              product={item}
+              key={item.id}
+              handleQuickView={handleQuickView}
+            />
+          ))}
         </div>
       )}
-
-      {/* Error State */}
-      {status === "failed" && (
-        <Alert
-          severity="error"
-          className="my-8"
-          action={
-            <Button
-              color="inherit"
-              size="small"
-              onClick={() =>
-                dispatch(fetchProducts({ page, category, sort, search }))
-              }
-            >
-              Retry
-            </Button>
-          }
-        >
-          {error ?? "Unable to load products. Please try again."}
-        </Alert>
-      )}
-
-      {/* Product Grid / Empty State */}
-      {status === "succeeded" &&
-        (items.length === 0 ? (
-          <div className="py-20 text-center">
-            <span
-              className="material-symbols-outlined text-outline text-[48px] mb-space-md block"
-              aria-hidden="true"
-            >
-              inventory_2
-            </span>
-            <h2 className="font-headline-md text-headline-md text-primary">
-              Nothing found this time.
-            </h2>
-            <p className="mt-space-xs text-body-md text-on-surface-variant">
-              Try another search or choose a different category.
-            </p>
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-            {items.map((item) => (
-              <ProductCard
-                product={item}
-                key={item.id}
-                handleQuickView={handleQuickView}
-              />
-            ))}
-          </div>
-        ))}
 
       {/* Quick View Dialog */}
       <ProductQuickView
@@ -167,7 +130,6 @@ export default function ProductsPage() {
             count={totalPages}
             page={page}
             onChange={(_, selectedPage) => setPage(selectedPage)}
-            disabled={status === "loading"}
             color="primary"
             shape="rounded"
           />

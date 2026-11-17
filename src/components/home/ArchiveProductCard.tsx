@@ -1,15 +1,12 @@
 import Link from "next/link";
+
 import type { Product } from "@/features/products/product.types";
+
+import { formatPrice } from "@/lib/utils/formatters";
 
 type ArchiveProductCardProps = {
   product: Product;
 };
-
-const priceFormatter = new Intl.NumberFormat("en-EG", {
-  style: "currency",
-  currency: "EGP",
-  maximumFractionDigits: 0,
-});
 
 export default function ArchiveProductCard({
   product,
@@ -54,7 +51,7 @@ export default function ArchiveProductCard({
 
       <div className="flex items-center justify-between p-4 pt-2 border-t border-surface-variant/40">
         <span className="font-numeral-price text-numeral-price text-primary">
-          {priceFormatter.format(product.price)}
+          {formatPrice(product.price)}
         </span>
         <Link
           href={`/products/${product.id}`}

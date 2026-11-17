@@ -57,7 +57,9 @@ export default function ProductPurchaseActions({
             onClick={handleDecrement}
             className="w-8 h-8 flex items-center justify-center text-primary hover:bg-surface-container-low disabled:opacity-40 disabled:cursor-not-allowed rounded transition-colors cursor-pointer"
           >
-            <span className="material-symbols-outlined text-[18px]">remove</span>
+            <span className="material-symbols-outlined text-[18px]">
+              remove
+            </span>
           </button>
           <span className="w-10 text-center font-numeral-price text-numeral-price text-primary font-semibold select-none">
             {isOutOfStock ? 0 : quantity}
@@ -83,9 +85,7 @@ export default function ProductPurchaseActions({
           <span className="material-symbols-outlined text-[20px]">
             shopping_bag
           </span>
-          <span>
-            {isOutOfStock ? "Sold Out" : "Add to Cart"}
-          </span>
+          <span>{isOutOfStock ? "Sold Out" : "Add to Cart"}</span>
           {!isOutOfStock && (
             <span className="font-numeral-price font-normal text-on-primary/80">
               — {priceFormatter.format(product.price * quantity)}
@@ -110,4 +110,3 @@ export default function ProductPurchaseActions({
     </div>
   );
 }
-
